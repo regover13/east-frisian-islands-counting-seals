@@ -53,13 +53,32 @@ Alle Positionen wurden im MSFS World Editor auf tatsächliche Strandabschnitte v
 
 ## Build-Workflow (Entwickler)
 
+### MSFS 2024
+
+MSFS 2024 liest PackageSources-XML direkt – kein BGL-Compile nötig.
+
 ```
 1. python generate_seals.py
    -> schreibt E:\Addons\PackageSources\scene\EDWG_Seals.xml
    -> schreibt komplettes Paket nach E:\Addons\Community\devprops-counting-seals-frisian-islands\
 
+2. Addons Linker: devprops-counting-seals-frisian-islands zeigt auf
+   E:\Addons\Community\devprops-counting-seals-frisian-islands\
+   (Linkziel: ...\LocalCache\Packages\Community\devprops-counting-seals-frisian-islands)
+```
+
+### MSFS 2020
+
+MSFS 2020 benoetigt ein kompiliertes BGL – dafuer wird fspackagetool verwendet.
+
+```
+1. python generate_seals.py
+   -> schreibt E:\Addons\PackageSources\scene\EDWG_Seals.xml
+   -> schreibt Paketstruktur nach E:\Addons\Community\devprops-counting-seals-frisian-islands\
+
 2. MSFS Project Editor: E:\Addons\counting-seals.xml oeffnen -> Build All
    -> kompiliert BGL nach E:\Addons\counting-seals-build\Build\devprops-counting-seals-frisian-islands\
+   (alternativ: build.bat ausfuehren – ruft fspackagetool direkt auf)
 
 3. Addons Linker: devprops-counting-seals-frisian-islands zeigt auf
    E:\Addons\Community\devprops-counting-seals-frisian-islands\
