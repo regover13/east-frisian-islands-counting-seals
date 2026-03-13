@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+extracted_models/
+.claude/
+.playwright-mcp/
+aktuelle_zahlen.txt

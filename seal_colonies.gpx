@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="counting-seals-generator"
+     xmlns="http://www.topografix.com/GPX/1/1">
+  <trk><name>Frisian Seal Colonies</name><trkseg>
+    <trkpt lat="53.5618" lon="6.735"><name>Borkum – Suedstrand</name></trkpt>
+    <trkpt lat="53.5655" lon="6.776"><name>Borkum – Ostheller</name></trkpt>
+    <trkpt lat="53.6768" lon="7.043"><name>Juist – Oststrand</name></trkpt>
+    <trkpt lat="53.6822" lon="6.9548"><name>Juist – Weststrand</name></trkpt>
+    <trkpt lat="53.6972" lon="7.249"><name>Norderney – Oststrand</name></trkpt>
+    <trkpt lat="53.7085" lon="7.182"><name>Norderney – Nordstrand</name></trkpt>
+    <trkpt lat="53.7265" lon="7.3785"><name>Baltrum – Oststrand</name></trkpt>
+    <trkpt lat="53.7248" lon="7.3285"><name>Baltrum – Weststrand</name></trkpt>
+    <trkpt lat="53.7465" lon="7.5655"><name>Langeoog – Oststrand</name></trkpt>
+    <trkpt lat="53.7538" lon="7.5095"><name>Langeoog – Nordstrand</name></trkpt>
+    <trkpt lat="53.778" lon="7.8155"><name>Spiekeroog – Ostende</name></trkpt>
+    <trkpt lat="53.7618" lon="7.6325"><name>Spiekeroog – Westende</name></trkpt>
+    <trkpt lat="53.7872" lon="7.9335"><name>Wangerooge – Ostende</name></trkpt>
+    <trkpt lat="53.794" lon="7.845"><name>Wangerooge – Westende</name></trkpt>
+  </trkseg></trk>
+</gpx>

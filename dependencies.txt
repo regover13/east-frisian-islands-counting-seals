@@ -1,0 +1,11 @@
+Counting Seals – Frisian Islands
+Abhängigkeiten
+==============
+
+Pflicht (muss im Community-Ordner aktiv sein):
+
+  human-library-animated
+  Quelle: flightsim.to (kostenlos)
+  https://de.flightsim.to/addon/33166/animated-humans-library
+
+Ohne dieses Paket sind keine Tiere sichtbar.

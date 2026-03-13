@@ -1,0 +1,60 @@
+{
+  "colonies": [
+    {
+      "island": "Borkum",
+      "icao": "EDWB",
+      "locations": [
+        {"name": "Suedstrand-West", "lat": 53.555536, "lon": 6.725568, "count_min": 12, "count_max": 20},
+        {"name": "Suedstrand-Ost",  "lat": 53.557510, "lon": 6.727395, "count_min": 20, "count_max": 35}
+      ]
+    },
+    {
+      "island": "Juist",
+      "icao": "EDWJ",
+      "locations": [
+        {"name": "Oststrand",   "lat": 53.687456, "lon": 7.047294, "count_min": 15, "count_max": 35},
+        {"name": "Weststrand",  "lat": 53.678601, "lon": 6.954844, "count_min": 10, "count_max": 20}
+      ]
+    },
+    {
+      "island": "Norderney",
+      "icao": "EDWY",
+      "locations": [
+        {"name": "Oststrand",   "lat": 53.723505, "lon": 7.250180, "count_min": 20, "count_max": 40},
+        {"name": "Nordstrand",  "lat": 53.723091, "lon": 7.203580, "count_min": 15, "count_max": 30}
+      ]
+    },
+    {
+      "island": "Baltrum",
+      "icao": "EDWI",
+      "locations": [
+        {"name": "Oststrand",   "lat": 53.733038, "lon": 7.378404, "count_min": 10, "count_max": 25},
+        {"name": "Weststrand",  "lat": 53.727809, "lon": 7.328515, "count_min": 8,  "count_max": 20}
+      ]
+    },
+    {
+      "island": "Langeoog",
+      "icao": "EDWL",
+      "locations": [
+        {"name": "Oststrand",   "lat": 53.758866, "lon": 7.565573, "count_min": 15, "count_max": 35},
+        {"name": "Nordstrand",  "lat": 53.756560, "lon": 7.509365, "count_min": 10, "count_max": 20}
+      ]
+    },
+    {
+      "island": "Spiekeroog",
+      "icao": "EDWS",
+      "locations": [
+        {"name": "Ostende",     "lat": 53.779879, "lon": 7.819503, "count_min": 15, "count_max": 30},
+        {"name": "Westende",    "lat": 53.755090, "lon": 7.641781, "count_min": 10, "count_max": 25}
+      ]
+    },
+    {
+      "island": "Wangerooge",
+      "icao": "EDWW",
+      "locations": [
+        {"name": "Ostende",     "lat": 53.787793, "lon": 7.937940, "count_min": 20, "count_max": 40},
+        {"name": "Westende",    "lat": 53.781440, "lon": 7.859459, "count_min": 12, "count_max": 28}
+      ]
+    }
+  ]
+}
