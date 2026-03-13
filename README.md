@@ -1,6 +1,6 @@
 # Counting Seals – Frisian Islands MSFS Addon
 
-Simuliert Robbenkolonien auf den ostfriesischen Inseln für realistische Tierzählungen aus der Luft in MSFS 2024.
+Simuliert Robbenkolonien auf den ostfriesischen Inseln für realistische Tierzählungen aus der Luft in MSFS 2020 und 2024.
 
 ## Abhängigkeiten
 
