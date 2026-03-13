@@ -5,7 +5,7 @@ Simuliert Robbenkolonien auf den ostfriesischen Inseln für realistische Tierzä
 ## Abhängigkeiten
 
 - **[human-library-animated](https://flightsim.to/addon/33166/animated-humans-library)** (muss im Community-Ordner aktiv sein)
-- MSFS 2024 SDK (fspackagetool für BGL-Kompilierung)
+- MSFS 2020 oder 2024 SDK (fspackagetool für BGL-Kompilierung unter MSFS 2020)
 
 ## Tiere
 
@@ -46,7 +46,7 @@ Alle Positionen wurden im MSFS World Editor auf tatsächliche Strandabschnitte v
 
 | Datei | Beschreibung |
 |-------|-------------|
-| `generate_seals.py` | Hauptskript – generiert `EDWG_Seals.xml` und schreibt komplettes Paket direkt nach Community |
+| `generate_seals.py` | Hauptskript – generiert `EDWG_Seals.xml` (SDK-Szene) und `seal_colonies.gpx` |
 | `seal_colonies.json` | Koloniekoordinaten (kalibriert) |
 | `seal_colonies.gpx` | GPX-Export der Koloniezentren |
 | `bgl_writer.py` | Hilfsbibliothek für BGL-Ausgabe |
@@ -60,7 +60,6 @@ MSFS 2024 liest PackageSources-XML direkt – kein BGL-Compile nötig.
 ```
 1. python generate_seals.py
    -> schreibt E:\Addons\PackageSources\scene\EDWG_Seals.xml
-   -> schreibt komplettes Paket nach E:\Addons\Community\devprops-counting-seals-frisian-islands\
 
 2. Addons Linker: devprops-counting-seals-frisian-islands zeigt auf
    E:\Addons\Community\devprops-counting-seals-frisian-islands\

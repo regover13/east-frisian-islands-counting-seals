@@ -8,7 +8,7 @@ REM ─────────────────────────�
 setlocal
 
 set SDK_TOOL="D:\MSFS SDK\Tools\bin\fspackagetool.exe"
-set PKG_SRC=E:\Addons\Community\counting-seals-frisian-islands\PackageSources\seals-frisian
+set PKG_SRC=E:\Addons\Community\devprops-counting-seals-frisian-islands\PackageSources\seals-frisian
 
 echo.
 echo [*] Frisian Islands Seals – Package Build
@@ -36,7 +36,7 @@ if errorlevel 1 (
 
 echo.
 echo [3/3] Done.
-echo       Package: E:\Addons\Community\counting-seals-frisian-islands\
+echo       Package: E:\Addons\Community\devprops-counting-seals-frisian-islands\
 echo       Airports: EDWB EDWJ EDWY EDWI EDWL EDWS EDWW
 echo.
 pause
