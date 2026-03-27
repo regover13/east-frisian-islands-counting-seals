@@ -249,6 +249,8 @@ Das Backup-Script liegt unter `/opt/backup/scripts/backup_onedrive.sh` (Projekt:
 | docker-compose.yml | `Server-Backup/wedevly/` |
 | Mailserver-Config + DKIM-Keys | `Server-Backup/mailserver/config/` |
 | Mailbox-Daten | `Server-Backup/mailserver/mail-data/` |
+| Nextcloud DB (mysqldump) | `Server-Backup/nextcloud/nextcloud-db-backup.sql` |
+| Nextcloud-Daten | `Server-Backup/nextcloud/data/` |
 
 ---
 

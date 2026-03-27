@@ -210,9 +210,11 @@ Fail2ban-Config: `maxretry=5`, `findtime=600s`, `bantime=3600s`
 
 ## Backup
 
-Nextcloud-Daten werden täglich um 03:00 Uhr nach OneDrive gesichert:
+Nextcloud-Daten werden täglich um 03:00 Uhr nach OneDrive gesichert (Projekt: `server-backup`):
 
-| Was | Wo auf OneDrive |
-|---|---|
-| Nextcloud-Daten | `Server-Backup/nextcloud-data/` |
-| Datenbank | `Server-Backup/nextcloud-db/` |
+| Was | Wo auf OneDrive | Methode |
+|---|---|---|
+| Datenbank | `Server-Backup/nextcloud/nextcloud-db-backup.sql` | `mysqldump` (konsistent) |
+| Benutzerdateien + Config | `Server-Backup/nextcloud/data/` | `rclone sync` |
+
+Thumbnails/Previews werden vom Backup ausgeschlossen — Nextcloud generiert sie automatisch neu.
