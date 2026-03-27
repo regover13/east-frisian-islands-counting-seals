@@ -173,12 +173,30 @@ Eingaben im Formular (Modus: **Auto**):
 
 Nextcloud erkennt automatisch IMAP/SMTP über `mail.wedevly.de`.
 
-### Eingerichtete Konten (admin-Benutzer)
+### Nextcloud-Benutzer
 
-| E-Mail | Domain |
+Jede Person hat einen eigenen Nextcloud-Login. Benutzername = E-Mail-Adresse.
+
+| Nextcloud-Login | Mailkonto |
 |---|---|
-| `frs49@devprops.de` | devprops.de |
-| `info@wedevly.de` | wedevly.de |
+| `frs49@devprops.de` | frs49@devprops.de (devprops.de) |
+| `info@wedevly.de` | info@wedevly.de (wedevly.de) |
+
+Admin-Konto (`admin`) hat **keine** Mailkonten — nur für Server-Verwaltung.
+
+#### Neuen Nextcloud-Benutzer anlegen
+
+```bash
+ssh server
+# Passwort ohne Sonderzeichen:
+docker exec --user www-data nextcloud php occ user:add LOGINNAME \
+  --display-name="Anzeigename" --password-from-env
+# Passwort mit Sonderzeichen ($, %, &, ...):
+python3 -c "import subprocess,os,base64; pw=base64.b64decode('BASE64PW').decode(); \
+  env={**os.environ,'OC_PASS':pw}; subprocess.run(['docker','exec','--user','www-data', \
+  '-e','OC_PASS','nextcloud','php','occ','user:add','LOGINNAME', \
+  '--display-name=NAME','--password-from-env'],env=env)"
+```
 
 ### IMAP/SMTP für native Apps (iOS, Thunderbird, Outlook)
 
