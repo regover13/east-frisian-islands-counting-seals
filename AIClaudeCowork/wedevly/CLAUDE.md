@@ -157,24 +157,65 @@ Nextcloud ersetzt Roundcube. Enthält: Mail, Kalender (CalDAV), Kontakte (CardDA
 - CalDAV + CardDAV: `https://cloud.devprops.de/remote.php/dav`
 - iOS/Android findet die URL automatisch via `.well-known`
 
+### IMAP-Konto in Nextcloud Mail einrichten
+
+1. `https://cloud.devprops.de` öffnen → Mail-App
+2. Beim ersten Start erscheint „Konto verbinden" automatisch
+3. Weiteres Konto: Mail-Einstellungen (unten links) → „Konto hinzufügen"
+
+Eingaben im Formular (Modus: **Auto**):
+
+| Feld | Wert |
+|---|---|
+| Name | beliebig (z.B. `Tobias`) |
+| E-Mail-Adresse | z.B. `frs49@devprops.de` |
+| Passwort | das IMAP-Passwort des Kontos |
+
+Nextcloud erkennt automatisch IMAP/SMTP über `mail.wedevly.de`.
+
+### Eingerichtete Konten (admin-Benutzer)
+
+| E-Mail | Domain |
+|---|---|
+| `frs49@devprops.de` | devprops.de |
+| `info@wedevly.de` | wedevly.de |
+
+### IMAP/SMTP für native Apps (iOS, Thunderbird, Outlook)
+
+Native E-Mail-Apps können direkt mit dem Mailserver verbunden werden — unabhängig von Nextcloud:
+
+| Einstellung | Wert |
+|---|---|
+| IMAP-Server | `mail.wedevly.de` |
+| IMAP-Port | `993` (SSL/TLS) |
+| SMTP-Server | `mail.wedevly.de` |
+| SMTP-Port | `587` (STARTTLS) |
+| Benutzername | die vollständige E-Mail-Adresse |
+| Passwort | das IMAP-Passwort des Kontos |
+
+Hinweis: `mail.wedevly.de` und `mail.devprops.de` leiten im Browser auf `cloud.devprops.de` weiter — die IMAP/SMTP-Ports (993, 587) sind davon nicht betroffen.
+
 ---
 
-## E-Mail (wedevly.de)
+## E-Mail-Server (Mailserver)
 
 | Eigenschaft | Wert |
 |---|---|
-| Webmail | https://cloud.devprops.de (Nextcloud Mail-App) |
 | IMAP | `mail.wedevly.de`, Port 993 (SSL) |
 | SMTP | `mail.wedevly.de`, Port 587 (STARTTLS) |
 | Server-Pfad | `/opt/mailserver/` |
+| Container | `mailserver` (docker-mailserver) |
 
-Hinweis: `mail.wedevly.de` und `mail.devprops.de` leiten automatisch auf `cloud.devprops.de` weiter.
-
-### E-Mail-Konto anlegen
+### Neues E-Mail-Konto anlegen
 
 ```bash
-ssh -i ~/.ssh/deploy-wedevly deploy-wedevly@167.86.127.129 \
-  "sudo /opt/wedevly/mail-add.sh info@wedevly.de"
+ssh server
+docker exec -it mailserver setup email add neuerkonto@wedevly.de
+```
+
+Passwörter mit Sonderzeichen (`$`, `%`, `&` etc.) sicher setzen:
+```bash
+python3 -c "import subprocess; subprocess.run(['docker','exec','mailserver','setup','email','add','konto@domain.de','passwort'])"
 ```
 
 ---
@@ -218,7 +259,9 @@ nginx (auf dem Server)
   ├─ mcp.devprops.de     → E-Mail-Tool von Papa       [kein Zugriff]
   ├─ tsbot.devprops.de   → TeamSpeak-Bot von Papa     [kein Zugriff]
   ├─ wedevly.de          → Deine Website              ← hier arbeitest du
-  └─ mail.wedevly.de     → Dein Webmail               ← hier arbeitest du
+  ├─ mail.wedevly.de     → Redirect → cloud.devprops.de
+  ├─ mail.devprops.de   → Redirect → cloud.devprops.de
+  └─ cloud.devprops.de  → Nextcloud (Mail, Kalender, Kontakte) ← hier arbeitest du
 ```
 
 ---
