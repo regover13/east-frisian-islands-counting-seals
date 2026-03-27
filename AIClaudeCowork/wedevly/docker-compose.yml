@@ -1,0 +1,50 @@
+services:
+  mailserver:
+    image: ghcr.io/docker-mailserver/docker-mailserver:latest
+    container_name: mailserver
+    hostname: mail.wedevly.de
+    domainname: wedevly.de
+    restart: unless-stopped
+    ports:
+      - "25:25"
+      - "465:465"
+      - "587:587"
+      - "993:993"
+    volumes:
+      - ./mail-data:/var/mail
+      - ./mail-state:/var/mail-state
+      - ./mail-logs:/var/log/mail
+      - ./config:/tmp/docker-mailserver
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    environment:
+      - ENABLE_RSPAMD=1
+      - ENABLE_CLAMAV=0
+      - ENABLE_FAIL2BAN=1
+      - SSL_TYPE=letsencrypt
+      - SSL_DOMAIN=mail.wedevly.de
+      - POSTMASTER_ADDRESS=postmaster@wedevly.de
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - mailnet
+
+  roundcube:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcube
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8086:80"
+    environment:
+      - ROUNDCUBEMAIL_DEFAULT_HOST=ssl://mail.wedevly.de
+      - ROUNDCUBEMAIL_DEFAULT_PORT=993
+      - ROUNDCUBEMAIL_SMTP_SERVER=tls://mail.wedevly.de
+      - ROUNDCUBEMAIL_SMTP_PORT=587
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
+    depends_on:
+      - mailserver
+    networks:
+      - mailnet
+
+networks:
+  mailnet:
+    name: mailnet
