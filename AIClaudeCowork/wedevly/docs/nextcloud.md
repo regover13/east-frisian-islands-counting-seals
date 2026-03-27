@@ -185,6 +185,27 @@ docker exec --user www-data nextcloud php occ twofactorauth:enforce --on
 docker exec --user www-data nextcloud php occ twofactorauth:enforce --off
 ```
 
+### Brute-Force-Schutz
+
+Zwei Schutzschichten sind aktiv:
+
+1. **Nextcloud eingebaut** (`bruteforcesettings`-App): drosselt Login-Versuche pro IP automatisch.
+2. **Fail2ban** (`/etc/fail2ban/jail.d/nextcloud.conf`): sperrt IPs nach 5 fehlgeschlagenen Logins
+   für 1 Stunde auf Firewall-Ebene (nftables).
+
+```bash
+# Status prüfen
+fail2ban-client status nextcloud
+
+# Gesperrte IPs anzeigen
+fail2ban-client status nextcloud | grep "Banned IP"
+
+# IP manuell entsperren
+fail2ban-client unban <IP>
+```
+
+Fail2ban-Config: `maxretry=5`, `findtime=600s`, `bantime=3600s`
+
 ---
 
 ## Backup
