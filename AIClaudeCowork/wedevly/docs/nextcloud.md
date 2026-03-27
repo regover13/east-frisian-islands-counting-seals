@@ -127,6 +127,9 @@ Wichtige gesetzte Werte:
 docker exec --user www-data nextcloud php occ config:system:set overwriteprotocol --value='https'
 docker exec --user www-data nextcloud php occ config:system:set overwrite.cli.url --value='https://cloud.devprops.de'
 docker exec --user www-data nextcloud php occ config:system:set trusted_proxies 0 --value='127.0.0.1'
+
+# Mail-App als Standard-Startseite (damit mail.wedevly.de direkt in der Mail-App landet)
+docker exec --user www-data nextcloud php occ config:system:set defaultapp --value='mail'
 ```
 
 ---
@@ -166,19 +169,21 @@ docker exec --user www-data nextcloud php occ maintenance:mode --off
 
 ### 2FA (Zwei-Faktor-Authentifizierung)
 
-Nextcloud unterstützt TOTP (z.B. Google Authenticator, Bitwarden Authenticator).
+**Status: aktiv — 2FA ist für alle Benutzer erzwungen.**
 
-**App installieren:**
+Nextcloud nutzt TOTP (z.B. Bitwarden Authenticator, Aegis, Google Authenticator).
+Beim nächsten Login erscheint automatisch ein QR-Code zum Einrichten.
+
 ```bash
+# TOTP-App aktivieren (bereits aktiv)
 docker exec --user www-data nextcloud php occ app:enable twofactor_totp
+
+# 2FA für alle erzwingen (bereits gesetzt)
+docker exec --user www-data nextcloud php occ twofactorauth:enforce --on
+
+# 2FA deaktivieren (falls nötig)
+docker exec --user www-data nextcloud php occ twofactorauth:enforce --off
 ```
-
-**2FA für alle Benutzer erzwingen** (Admin → Einstellungen → Sicherheit → Zwei-Faktor-Authentifizierung):
-- Als `admin` einloggen
-- Einstellungen → Verwaltung → Sicherheit
-- „Zwei-Faktor-Authentifizierung für alle Benutzer erzwingen" aktivieren
-
-Beim nächsten Login müssen alle Benutzer einen Authenticator einrichten.
 
 ---
 
