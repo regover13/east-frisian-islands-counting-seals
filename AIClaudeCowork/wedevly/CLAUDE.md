@@ -139,14 +139,36 @@ ssh -i ~/.ssh/deploy-wedevly deploy-wedevly@167.86.127.129 "sudo /opt/wedevly/re
 
 ---
 
+## Nextcloud (cloud.devprops.de)
+
+| Eigenschaft | Wert |
+|---|---|
+| URL | https://cloud.devprops.de |
+| Admin-User | `admin` |
+| Server-Pfad | `/opt/mailserver/` |
+| Container | `nextcloud` + `nextcloud-db` (MariaDB) |
+| Interner Port | 8087 |
+| Daten | `./nextcloud-data/`, `./nextcloud-db/` |
+
+Nextcloud ersetzt Roundcube. Enthält: Mail, Kalender (CalDAV), Kontakte (CardDAV), Dateien.
+
+### CalDAV / CardDAV URLs
+
+- CalDAV + CardDAV: `https://cloud.devprops.de/remote.php/dav`
+- iOS/Android findet die URL automatisch via `.well-known`
+
+---
+
 ## E-Mail (wedevly.de)
 
 | Eigenschaft | Wert |
 |---|---|
-| Webmail | https://mail.wedevly.de |
+| Webmail | https://cloud.devprops.de (Nextcloud Mail-App) |
 | IMAP | `mail.wedevly.de`, Port 993 (SSL) |
 | SMTP | `mail.wedevly.de`, Port 587 (STARTTLS) |
 | Server-Pfad | `/opt/mailserver/` |
+
+Hinweis: `mail.wedevly.de` und `mail.devprops.de` leiten automatisch auf `cloud.devprops.de` weiter.
 
 ### E-Mail-Konto anlegen
 
